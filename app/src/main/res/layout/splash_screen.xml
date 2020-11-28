@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreen.SplashScreen"
+    android:id="@+id/splash_screen"
+    android:background="#FECE2F">
+
+    <ImageView
+        android:id="@+id/Hotel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hotel2"
+        android:layout_marginBottom="80dp" />
+
+    <TextView
+        android:id="@+id/Logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="570dp"
+        android:text="@string/app_name"
+        android:textSize="56sp"
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/Slogan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="640dp"
+        android:text="Five Star Hotels At Indonesia"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+
+
+</RelativeLayout>

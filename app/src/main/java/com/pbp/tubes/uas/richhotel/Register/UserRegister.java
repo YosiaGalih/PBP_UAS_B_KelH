@@ -2,7 +2,7 @@ package com.pbp.tubes.uas.richhotel.Register;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,10 +17,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.pbp.tubes.uas.richhotel.MainActivity;
+import com.google.gson.GsonBuilder;
+import com.pbp.tubes.uas.richhotel.Api.ApiClient;
+import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
+import com.pbp.tubes.uas.richhotel.MainActivity.MainActivity;
 import com.pbp.tubes.uas.richhotel.R;
+import com.pbp.tubes.uas.richhotel.Response.UserResponse;
 
-import java.util.regex.Pattern;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserRegister extends AppCompatActivity implements View.OnClickListener{
 
@@ -67,6 +73,10 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         String fullname = txtFullName.getText().toString().trim();
         String age = txtAge.getText().toString().trim();
 
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<UserResponse> add = apiService.createUser(txtFullName.getText().toString(), txtAge.getText().toString(),
+                                                        txtEmail.getText().toString(), txtPassword.getText().toString());
+
         if(fullname.isEmpty()){
             txtFullName.setError("Full name is required!");
             txtFullName.requestFocus();
@@ -106,17 +116,20 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()){
                             User user = new User(fullname, age, email);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            add.enqueue(new Callback<UserResponse>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(UserRegister.this, "User has been registereed successfully!", Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(UserRegister.this, LoginUser.class));
-                                    }else{
-                                        Toast.makeText(UserRegister.this, "User has been failed to registered!", Toast.LENGTH_LONG).show();
-                                    }
+                                public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                                    Toast.makeText(UserRegister.this,  response.body().getMessage(), Toast.LENGTH_LONG).show();
+                                    onBackPressed();
+
+                                    Log.i("response", "msg" +new GsonBuilder().setPrettyPrinting().create().toJson(response));
+                                }
+
+                                @Override
+                                public void onFailure(Call<UserResponse> call, Throwable t) {
+                                    Toast.makeText(UserRegister.this, "Kesalahan Jaringan", Toast.LENGTH_LONG).show();
+
+                                    Log.i("response", "msg" + t.getMessage());
                                 }
                             });
                         }

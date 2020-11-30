@@ -18,8 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.pbp.tubes.uas.richhotel.MainActivity;
+import com.pbp.tubes.uas.richhotel.MainActivity.MainActivity;
+import com.pbp.tubes.uas.richhotel.MainActivity.MainActivity2;
 import com.pbp.tubes.uas.richhotel.R;
+import com.pbp.tubes.uas.richhotel.SplashScreen.StartActivity;
 
 public class LoginUser extends AppCompatActivity implements View.OnClickListener{
 
@@ -74,7 +76,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
             txtPassword.requestFocus();
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!txtEmail.getText().toString().matches("^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$")){
             txtEmail.setError("Please provide valid email!");
             txtEmail.requestFocus();
             return;
@@ -85,25 +87,30 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
             txtPassword.requestFocus();
             return;
         }
+        if(txtEmail.getText().toString().equalsIgnoreCase("admin@gmail.com") && txtPassword.getText().toString().equalsIgnoreCase("admin123")){
+            Toast.makeText(LoginUser.this, "Selamat datang admin!", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(LoginUser.this, MainActivity2.class));
+        }else {
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if(task.isSuccessful()){
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                    if(user.isEmailVerified()){
-                        startActivity(new Intent(LoginUser.this, MainActivity.class));
-                    }else{
-                        user.sendEmailVerification();
-                        Toast.makeText(LoginUser.this, "Please check your email!", Toast.LENGTH_LONG).show();
+                        if (user.isEmailVerified()) {
+                            startActivity(new Intent(LoginUser.this, MainActivity.class));
+                        } else {
+                            user.sendEmailVerification();
+                            Toast.makeText(LoginUser.this, "Please check your email!", Toast.LENGTH_LONG).show();
+                        }
+
+                    } else {
+                        Toast.makeText(LoginUser.this, "Failed to login!", Toast.LENGTH_LONG).show();
                     }
-
-                }else{
-                    Toast.makeText(LoginUser.this, "Failed to login!", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
+            });
+        }
     }
 }

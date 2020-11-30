@@ -67,6 +67,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
 }

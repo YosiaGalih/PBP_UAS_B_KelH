@@ -15,10 +15,10 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-    @GET("kamar_hotels")
+    @GET("kamar")
     Call<KamarResponse> getAllKamar(@Query("data")String data);
 
-    @GET("transaksis/{id_pemesan}")
+    @GET("transaksi/{id_pemesan}")
     Call<TransaksiResponse> gettTransaksiById(@Path("id_pemesan")String id,
                                               @Query("data")String data);
 
@@ -27,7 +27,7 @@ public interface ApiInterface {
 //                                   @Query("data")String data);
     @POST("registrasi")
     @FormUrlEncoded
-    Call<UserResponse> createUser(@Field("nama")String nama, @Field("age")String age,
+    Call<UserResponse> createUser(@Field("name")String nama, @Field("age")String age,
                                   @Field("email")String email, @Field("password")String password);
 
     @POST("registrasi/update/{id}")
@@ -35,7 +35,7 @@ public interface ApiInterface {
     Call<UserResponse> updateUser(@Field("nama")String nama, @Field("age")String age,
                                   @Field("email")String email, @Field("password")String password);
 
-    @POST("kamar_hotels")
+    @POST("kamar")
     @FormUrlEncoded
     Call<KamarResponse> createKamar(@Field("nama_kamar")String nama_kamar, @Field("kapasitas")String kapasitas,
                                     @Field("harga")String harga, @Field("imageURL")String image);
@@ -50,9 +50,9 @@ public interface ApiInterface {
     Call<KamarResponse> deleteKamar(@Field("nama_kamar")String nama_kamar, @Field("kapasitas")String kapasitas,
                                     @Field("harga")String harga, @Field("imageURL")String image);
 
-    @POST("transaksis")
+    @POST("transaksi")
     @FormUrlEncoded
-    Call<TransaksiResponse> createTransaksi(@Field("nama_pemesan")String nama_pemesan, @Field("id_pemesan")String id,
+    Call<TransaksiResponse> createTransaksi(@Field("nama")String nama_pemesan, @Field("id_pemesan")String id,
                                             @Field("alamat")String alamat, @Field("pilihan_kamar")String pilihan,
                                             @Field("tgl_check_in")String tglCheckIn, @Field("tgl_check_out")String tglCheckOut);
 

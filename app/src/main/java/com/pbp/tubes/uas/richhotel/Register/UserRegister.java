@@ -123,6 +123,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                                     onBackPressed();
 
                                     Log.i("response", "msg" +new GsonBuilder().setPrettyPrinting().create().toJson(response));
+                                    startActivity(new Intent(UserRegister.this, LoginUser.class));
                                 }
 
                                 @Override

@@ -70,7 +70,7 @@
         android:layout_marginLeft="-100dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp"
-        android:textColor="@color/blue"/>
+        android:textColor="@color/choco"/>
 
     <TextView
         android:id="@+id/haveAccount"
@@ -81,7 +81,7 @@
         android:text="Have a nice day"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp"
-        android:textColor="@color/blue"/>
+        android:textColor="@color/choco"/>
 
 
 </LinearLayout>

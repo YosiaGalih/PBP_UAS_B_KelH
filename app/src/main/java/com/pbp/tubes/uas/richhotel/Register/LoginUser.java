@@ -89,7 +89,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         }
         if(txtEmail.getText().toString().equalsIgnoreCase("admin@gmail.com") && txtPassword.getText().toString().equalsIgnoreCase("admin123")){
             Toast.makeText(LoginUser.this, "Selamat datang admin!", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(LoginUser.this, MainActivity2.class));
+            startActivity(new Intent(LoginUser.this, MainActivity.class));
         }else {
 
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -100,7 +100,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                         if (user.isEmailVerified()) {
-                            startActivity(new Intent(LoginUser.this, MainActivity.class));
+                            startActivity(new Intent(LoginUser.this, MainActivity2.class));
                         } else {
                             user.sendEmailVerification();
                             Toast.makeText(LoginUser.this, "Please check your email!", Toast.LENGTH_LONG).show();

@@ -1,6 +1,8 @@
 package com.pbp.tubes.uas.richhotel.Register;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.GsonBuilder;
 import com.pbp.tubes.uas.richhotel.Api.ApiClient;
 import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
+import com.pbp.tubes.uas.richhotel.Dao.UserDAO;
 import com.pbp.tubes.uas.richhotel.MainActivity.MainActivity;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.Response.UserResponse;
@@ -34,6 +37,9 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
     private EditText txtFullName, txtAge, txtEmail, txtPassword;
     private TextView banner;
     private Button registerUser;
+    private Intent intent = null;
+    private SharedPreferences sharedPreferences;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,11 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_user_register) ;
 
         mAuth = FirebaseAuth.getInstance();
+
+        sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+        String id = sharedPreferences.getString("id", "");
+
+        Log.i("register", "sharedPref Id: "+id);
 
         registerUser = (Button) findViewById(R.id.registerUser);
         registerUser.setOnClickListener(this);
@@ -82,7 +93,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
             txtFullName.requestFocus();
             return;
         }
-        if(email.isEmpty()){
+        if(email.isEmpty() || email.equals("0")){
             txtEmail.setError("Email is required!");
             txtEmail.requestFocus();
             return;
@@ -119,11 +130,21 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                             add.enqueue(new Callback<UserResponse>() {
                                 @Override
                                 public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                                    Log.i("register", "msg: " + new GsonBuilder().setPrettyPrinting().create().toJson(response));
                                     Toast.makeText(UserRegister.this,  response.body().getMessage(), Toast.LENGTH_LONG).show();
                                     onBackPressed();
 
+                                    UserDAO user = response.body().getUsers().get(0);
                                     Log.i("response", "msg" +new GsonBuilder().setPrettyPrinting().create().toJson(response));
-                                    startActivity(new Intent(UserRegister.this, LoginUser.class));
+                                    intent = new Intent(UserRegister.this, LoginUser.class);
+                                    intent.putExtra("id", user.getId());
+                                    finish();
+
+                                    startActivity(intent);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                    editor.putString("id", user.getId());
+                                    editor.apply();
                                 }
 
                                 @Override

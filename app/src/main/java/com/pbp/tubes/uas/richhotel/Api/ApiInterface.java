@@ -11,15 +11,14 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
 
     //--------------------------------------------API User--------------------------------------------//
-    @GET("user/{email}")
-    Call<KamarResponse> getUserByEmail(@Path("email")String email,
+    @GET("user/{id}")
+    Call<UserResponse> getUserById(@Path("id")String id,
                                        @Query("data")String data);
 
     @POST("registrasi")
@@ -53,6 +52,9 @@ public interface ApiInterface {
     Call<KamarResponse> deleteKamar(@Path("id")String id);
 
     //--------------------------------------------API Transaksi--------------------------------------------//
+
+    @GET("transaksi")
+    Call<TransaksiResponse> getAllTransaksi(@Query("data")String data);
 
     @GET("transaksi/{id_pemesan}")
     Call<TransaksiResponse> gettTransaksiByIdPemesan(@Path("id_pemesan")String id_pemesan,

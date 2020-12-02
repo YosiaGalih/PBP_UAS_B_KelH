@@ -1,6 +1,8 @@
 package com.pbp.tubes.uas.richhotel.Register;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -28,6 +30,8 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
     private TextView register;
     private EditText txtPassword, txtEmail;
     private Button login;
+    SharedPreferences sharedPreferences;
+    String emailString, passwordString;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
@@ -46,6 +50,7 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
         txtEmail = (EditText) findViewById(R.id.email);
         txtPassword = (EditText) findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
+
 
     }
 
@@ -113,4 +118,5 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
             });
         }
     }
+
 }

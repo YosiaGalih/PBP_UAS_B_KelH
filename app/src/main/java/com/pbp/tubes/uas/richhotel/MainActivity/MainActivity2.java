@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.pbp.tubes.uas.richhotel.About;
+import com.pbp.tubes.uas.richhotel.Profil.ProfilUser;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.SignOut.SignOut;
 import com.pbp.tubes.uas.richhotel.SignOut.SignOutUser;
@@ -17,7 +18,7 @@ import com.pbp.tubes.uas.richhotel.SignOut.SignOutUser;
 //USER//
 public class MainActivity2 extends AppCompatActivity {
 
-    public RelativeLayout  btnAbout, btnSignOut;
+    public RelativeLayout  btnAbout, btnSignOut, btnProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         btnAbout = (RelativeLayout) findViewById(R.id.about);
         btnSignOut = (RelativeLayout) findViewById(R.id.sign_out);
+        btnProfile = (RelativeLayout) findViewById(R.id.profil);
 
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +40,14 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignOutUser.class);
+                startActivity(intent);
+            }
+        });
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ProfilUser.class);
                 startActivity(intent);
             }
         });

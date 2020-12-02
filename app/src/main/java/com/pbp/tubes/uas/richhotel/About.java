@@ -56,7 +56,7 @@ public class About extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.menu_Home_Page){
-            startActivity(new Intent(this, MainActivity.class));
+            onBackPressed();
         }
 
         return true;

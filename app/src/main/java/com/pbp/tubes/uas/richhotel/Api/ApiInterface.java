@@ -17,8 +17,11 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
     //--------------------------------------------API User--------------------------------------------//
-    @GET("user/{id}")
-    Call<UserResponse> getUserById(@Path("id")String id,
+//    @GET("user")
+//    Call<UserResponse> getUser(@Query("data")String data);
+
+    @GET("user/{email}")
+    Call<UserResponse> getUserByEmail(@Path("email")String email,
                                        @Query("data")String data);
 
     @POST("registrasi")

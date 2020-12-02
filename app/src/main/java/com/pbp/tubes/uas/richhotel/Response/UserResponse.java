@@ -9,15 +9,19 @@ import java.util.List;
 public class UserResponse {
     @SerializedName("data")
     @Expose
-    private List<UserDAO> user = null;
+    private UserDAO user = null;
 
     @SerializedName("message")
     @Expose
     private String message;
 
-    public List<UserDAO> getUsers() {return user;}
+    public UserDAO getUser() {
+        return user;
+    }
 
-    public void setUsers(List<UserDAO> users) {this.user=users;}
+    public void setUser(UserDAO user) {
+        this.user = user;
+    }
 
     public String getMessage() { return message;}
 

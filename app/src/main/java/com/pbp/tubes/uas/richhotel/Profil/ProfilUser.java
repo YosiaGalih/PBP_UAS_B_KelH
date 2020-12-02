@@ -1,5 +1,6 @@
 package com.pbp.tubes.uas.richhotel.Profil;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,10 +31,14 @@ public class ProfilUser extends AppCompatActivity {
     private String sIdUser, sNama, sAge, sEmail;
     private ProgressDialog progressDialog;
     private Button btnCancel, btnEdit;
+    private String email;
+    public static final int mode = Activity.MODE_PRIVATE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sp = getSharedPreferences("Login", mode);
+        email = sp.getString("email", "");
         setContentView(R.layout.profil_user);
 
         progressDialog = new ProgressDialog(this);
@@ -48,15 +53,11 @@ public class ProfilUser extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sp = getSharedPreferences("register", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sp.edit();
-
-                editor.putString("id", "");
-                editor.apply();
-
-                Intent i = new Intent(ProfilUser.this, MainActivity2.class);
-                startActivity(i);
-                finish();
+//                Intent i = new Intent(ProfilUser.this, MainActivity2.class);
+//                startActivity(i);
+//                finish();
+                //lebih aman pke ini menurutku
+                onBackPressed();
             }
         });
 
@@ -69,23 +70,24 @@ public class ProfilUser extends AppCompatActivity {
             }
         });
 
-        sIdUser = getIntent().getStringExtra("id");
-        loadUserByEmail(sIdUser);
+        //sIdUser = getIntent().getStringExtra("id");
+        loadUserByEmail(email);
 
     }
 
-    private void loadUserByEmail(String id) {
+    private void loadUserByEmail(String email) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<UserResponse> add = apiService.getUserById(id, "data");
+        Call<UserResponse> add = apiService.getUserByEmail(email, "data");
 
         add.enqueue(new Callback<UserResponse>() {
 
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 Log.i("register", "msg: " + new GsonBuilder().setPrettyPrinting().create().toJson(response));
-                sNama = response.body().getUsers().get(0).getName();
-                sAge = response.body().getUsers().get(0).getAge();
-                sEmail = response.body().getUsers().get(0).getEmail();
+                sNama = response.body().getUser().getName();
+                sAge = response.body().getUser().getAge();
+                sEmail = response.body().getUser().getEmail();
+                sIdUser = response.body().getUser().getId();
 
                 twNama.setText(sNama);
                 twAge.setText(sAge);
@@ -95,7 +97,7 @@ public class ProfilUser extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-                Toast.makeText(ProfilUser.this, "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfilUser.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
             }
         });

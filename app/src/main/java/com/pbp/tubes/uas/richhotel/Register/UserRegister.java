@@ -133,18 +133,6 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
                                     Log.i("register", "msg: " + new GsonBuilder().setPrettyPrinting().create().toJson(response));
                                     Toast.makeText(UserRegister.this,  response.body().getMessage(), Toast.LENGTH_LONG).show();
                                     onBackPressed();
-
-                                    UserDAO user = response.body().getUsers().get(0);
-                                    Log.i("response", "msg" +new GsonBuilder().setPrettyPrinting().create().toJson(response));
-                                    intent = new Intent(UserRegister.this, LoginUser.class);
-                                    intent.putExtra("id", user.getId());
-                                    finish();
-
-                                    startActivity(intent);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                                    editor.putString("id", user.getId());
-                                    editor.apply();
                                 }
 
                                 @Override

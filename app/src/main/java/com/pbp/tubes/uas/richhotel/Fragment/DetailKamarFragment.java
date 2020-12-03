@@ -26,9 +26,11 @@ import com.pbp.tubes.uas.richhotel.Api.ApiClient;
 import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
 import com.pbp.tubes.uas.richhotel.Create.CreateKamar;
 import com.pbp.tubes.uas.richhotel.Daftar.DaftarKamarAdmin;
+import com.pbp.tubes.uas.richhotel.Edit.EditKamar;
 import com.pbp.tubes.uas.richhotel.Profil.ProfilAdmin;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.Response.KamarResponse;
+import com.pbp.tubes.uas.richhotel.Response.KamarResponseObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,8 +90,8 @@ public class DetailKamarFragment extends DialogFragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), CreateKamar.class);
-                i.putExtra("id", sIdKamar);
+                Intent i = new Intent(getContext(), EditKamar.class);
+                i.putExtra("kamarId", sIdKamar);
                 startActivity(i);
                 dismiss();
             }
@@ -100,26 +102,29 @@ public class DetailKamarFragment extends DialogFragment {
 
     private void loadKamarById(String id){
         ApiInterface apiServiceKamarId = ApiClient.getClient().create(ApiInterface.class);
-        Call<KamarResponse> getKamar = apiServiceKamarId.getKamarById(id, "data");
+        Call<KamarResponseObject> getKamar = apiServiceKamarId.getKamarById(id, "data");
 
-        getKamar.enqueue(new Callback<KamarResponse>() {
+        getKamar.enqueue(new Callback<KamarResponseObject>() {
             @Override
-            public void onResponse(Call<KamarResponse> call, Response<KamarResponse> response) {
-                sNama = response.body().getKamar().get(0).getNama_kamar();
-                sHarga = response.body().getKamar().get(0).getHarga();
-                sKapasitas = response.body().getKamar().get(0).getKapasitas();
-                sGambar = response.body().getKamar().get(0).getImageURL();
+            public void onResponse(Call<KamarResponseObject> call, Response<KamarResponseObject> response) {
+                sNama = response.body().getKamar().getNama_kamar();
+                sHarga = response.body().getKamar().getHarga();
+                sKapasitas = response.body().getKamar().getKapasitas();
+                sGambar = response.body().getKamar().getImageURL();
 
                 twNama.setText(sNama);
                 twHarga.setText(sHarga);
                 twKapasitas.setText(sKapasitas);
-                twGambar.setImageResource(Integer.parseInt(sGambar));
+//                try{
+//                    twGambar.setImageResource(Integer.parseInt(sGambar));
+//
+//                }catch (NumberFormatException e){}
                 progressDialog.dismiss();
             }
 
             @Override
-            public void onFailure(Call<KamarResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<KamarResponseObject> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
             }
         });
@@ -127,26 +132,26 @@ public class DetailKamarFragment extends DialogFragment {
 
     private void delete(String id){
         ApiInterface apiDeleteKamar = ApiClient.getClient().create(ApiInterface.class);
-        Call<KamarResponse> reqDeleteKamar = apiDeleteKamar.deleteKamar(id, "", "", "", "");
+        Call<KamarResponseObject> reqDeleteKamar = apiDeleteKamar.deleteKamar(id);
 
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
-                        reqDeleteKamar.enqueue(new Callback<KamarResponse>() {
+                        reqDeleteKamar.enqueue(new Callback<KamarResponseObject>() {
                             @Override
-                            public void onResponse(Call<KamarResponse> call, Response<KamarResponse> response) {
+                            public void onResponse(Call<KamarResponseObject> call, Response<KamarResponseObject> response) {
                                 Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                                Log.i("DELETE KAMAR", response.body().getMessage());
-                                Intent intent = new Intent(getActivity(), DaftarKamarAdmin.class);
-                                startActivity(intent);
+//                                Log.i("DELETE KAMAR", response.body().getMessage());
+//                                Intent intent = new Intent(getActivity(), DaftarKamarAdmin.class);
+//                                startActivity(intent);
                                 dismiss();
                             }
 
                             @Override
-                            public void onFailure(Call<KamarResponse> call, Throwable t) {
-                                Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_LONG).show();
+                            public void onFailure(Call<KamarResponseObject> call, Throwable t) {
+                                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                                 Log.i("DELETE KAMAR", "Msg: " +t.getMessage());
                             }
                         });

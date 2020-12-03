@@ -27,8 +27,8 @@ import retrofit2.Response;
 
 public class EditUser extends AppCompatActivity {
 
-    private EditText editNama, editAge, editPassword, editEmail;
-    private String sIdUser, sNama, sAge, sEmail, sPassword;
+    private EditText editNama, editAge, editEmail;
+    private String sIdUser, sNama, sAge, sEmail;
     private MaterialButton btnEdit, btnCancel;
     private String email,id;
     private ProgressDialog progressDialog;
@@ -48,7 +48,6 @@ public class EditUser extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancel);
         editNama = findViewById(R.id.etNama);
         editAge = findViewById(R.id.etAge);
-        editPassword = findViewById(R.id.etPassword);
         editEmail = findViewById(R.id.etEmail);
 
         progressDialog = new ProgressDialog(this);
@@ -66,9 +65,6 @@ public class EditUser extends AppCompatActivity {
                 }else if(editAge.getText().toString().isEmpty()){
                     editAge.setError("Umur Harus Diisi");
                     editAge.requestFocus();
-                }else if(editPassword.getText().toString().isEmpty()){
-                    editPassword.setError("Password Harus Diisi");
-                    editPassword.requestFocus();
                 }else{
                     progressDialog.show();
                     update();
@@ -98,12 +94,10 @@ public class EditUser extends AppCompatActivity {
                 sAge = response.body().getUser().getAge();
                 sEmail = response.body().getUser().getEmail();
                 sIdUser = response.body().getUser().getId();
-                sPassword = response.body().getUser().getPassword();
 
                 editNama.setText(sNama);
                 editAge.setText(sAge);
                 editEmail.setText(sEmail);
-                editPassword.setText(sPassword);
                 progressDialog.dismiss();
             }
 
@@ -120,7 +114,7 @@ public class EditUser extends AppCompatActivity {
         ApiInterface apiServiceUpdateUser = ApiClient.getClient().create(ApiInterface.class);
         Call<UserResponse> reqUpdateUser = apiServiceUpdateUser.updateUser(id, editNama.getText().toString(),
                                                                             editAge.getText().toString(),
-                                                                            editEmail.getText().toString(), editPassword.getText().toString());
+                                                                            editEmail.getText().toString());
 
         reqUpdateUser.enqueue(new Callback<UserResponse>() {
             @Override

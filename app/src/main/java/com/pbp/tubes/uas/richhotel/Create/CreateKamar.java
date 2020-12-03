@@ -26,6 +26,7 @@ import com.pbp.tubes.uas.richhotel.Register.LoginUser;
 import com.pbp.tubes.uas.richhotel.Register.User;
 import com.pbp.tubes.uas.richhotel.Register.UserRegister;
 import com.pbp.tubes.uas.richhotel.Response.KamarResponse;
+import com.pbp.tubes.uas.richhotel.Response.KamarResponseObject;
 import com.pbp.tubes.uas.richhotel.Response.UserResponse;
 import com.pbp.tubes.uas.richhotel.SignOut.SignOut;
 
@@ -79,11 +80,11 @@ public class CreateKamar extends AppCompatActivity {
 
     private void createKamar() {
         ApiInterface apiServiceCreate = ApiClient.getClient().create(ApiInterface.class);
-        Call<KamarResponse> addKamar = apiServiceCreate.createKamar(tvNamaKamar.getText().toString(), tvKapasitas.getText().toString(),
+        Call<KamarResponseObject> addKamar = apiServiceCreate.createKamar(tvNamaKamar.getText().toString(), tvKapasitas.getText().toString(),
                                                                     tvHarga.getText().toString(), tvGambar.getText().toString());
-        addKamar.enqueue(new Callback<KamarResponse>() {
+        addKamar.enqueue(new Callback<KamarResponseObject>() {
             @Override
-            public void onResponse(Call<KamarResponse> call, Response<KamarResponse> response) {
+            public void onResponse(Call<KamarResponseObject> call, Response<KamarResponseObject> response) {
                 Toast.makeText(CreateKamar.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                 onBackPressed();
 
@@ -93,8 +94,8 @@ public class CreateKamar extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<KamarResponse> call, Throwable t) {
-                Toast.makeText(CreateKamar.this, "Kesalahan Jaringan", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<KamarResponseObject> call, Throwable t) {
+                Toast.makeText(CreateKamar.this, t.getMessage(), Toast.LENGTH_LONG).show();
 
                 Log.i("response", "msg: " +t.getMessage());
 

@@ -1,6 +1,7 @@
 package com.pbp.tubes.uas.richhotel.Api;
 
 import com.pbp.tubes.uas.richhotel.Response.KamarResponse;
+import com.pbp.tubes.uas.richhotel.Response.KamarResponseObject;
 import com.pbp.tubes.uas.richhotel.Response.TransaksiResponse;
 import com.pbp.tubes.uas.richhotel.Response.UserResponse;
 
@@ -33,7 +34,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<UserResponse> updateUser(@Path("id")String id,
                                   @Field("name")String nama, @Field("age")String age,
-                                  @Field("email")String email, @Field("password")String password);
+                                  @Field("email")String email);
 
     //--------------------------------------------API Kamar--------------------------------------------//
 
@@ -41,24 +42,22 @@ public interface ApiInterface {
     Call<KamarResponse> getAllKamar(@Query("data")String data);
 
     @GET("kamar/{id}")
-    Call<KamarResponse> getKamarById(@Path("id")String id,
-                                     @Query("data")String data);
+    Call<KamarResponseObject> getKamarById(@Path("id")String id,
+                                           @Query("data")String data);
 
     @POST("kamar")
     @FormUrlEncoded
-    Call<KamarResponse> createKamar(@Field("nama_kamar")String nama_kamar, @Field("kapasitas")String kapasitas,
+    Call<KamarResponseObject> createKamar(@Field("nama_kamar")String nama_kamar, @Field("kapasitas")String kapasitas,
                                     @Field("harga")String harga, @Field("imageURL")String image);
 
     @PUT("kamar/{id}")
     @FormUrlEncoded
-    Call<KamarResponse> updateKamar(@Path("id")String id,
+    Call<KamarResponseObject> updateKamar(@Path("id")String id,
                                     @Field("nama_kamar")String nama_kamar, @Field("kapasitas")String kapasitas,
                                     @Field("harga")String harga, @Field("imageURL")String image);
 
     @DELETE("kamar/{id}")
-    Call<KamarResponse> deleteKamar(@Path("id")String id, @Field("nama_kamar")String nama,
-                                    @Field("kapasitas")String kapasitas, @Field("harga")String harga,
-                                    @Field("imageURL")String image);
+    Call<KamarResponseObject> deleteKamar(@Path("id")String id);
 
     //--------------------------------------------API Transaksi--------------------------------------------//
 

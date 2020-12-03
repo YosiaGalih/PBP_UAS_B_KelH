@@ -19,6 +19,7 @@
         <activity android:name=".Register.LoginUser"></activity>
         <activity android:name=".MainActivity.MainActivity2"></activity>
         <activity android:name=".Create.CreateKamar"></activity>
+        <activity android:name=".Edit.EditKamar"></activity>
         <activity android:name=".Create.CreateReservasi"></activity>
         <activity android:name=".Daftar.DaftarKamarAdmin"></activity>
         <activity android:name=".Daftar.DaftarKamarUser"></activity>

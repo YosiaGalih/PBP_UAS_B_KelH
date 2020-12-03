@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pbp.tubes.uas.richhotel.About;
 import com.pbp.tubes.uas.richhotel.Create.CreateKamar;
+import com.pbp.tubes.uas.richhotel.Daftar.DaftarKamarAdmin;
 import com.pbp.tubes.uas.richhotel.Profil.ProfilAdmin;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.SignOut.SignOut;
@@ -19,7 +20,7 @@ import com.pbp.tubes.uas.richhotel.SignOut.SignOutUser;
 
 //ADMIN///
 public class MainActivity extends AppCompatActivity {
-    public RelativeLayout  btnAbout,btnSignOut, btnProfil, btnKamar;
+    public RelativeLayout  btnAbout,btnSignOut, btnProfil, btnKamar, btnDaftarKamar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnSignOut = (RelativeLayout) findViewById(R.id.sign_out);
         btnProfil = (RelativeLayout) findViewById(R.id.profil);
         btnKamar = (RelativeLayout) findViewById(R.id.kamar);
+        btnDaftarKamar = findViewById(R.id.daftarKamar);
 
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CreateKamar.class);
+                startActivity(intent);
+            }
+        });
+
+        btnDaftarKamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DaftarKamarAdmin.class);
                 startActivity(intent);
             }
         });

@@ -9,17 +9,17 @@ import java.util.List;
 public class KamarResponse {
     @SerializedName("data")
     @Expose
-    private KamarDAO kamar = null;
+    private List<KamarDAO> kamar = null;
 
     @SerializedName("message")
     @Expose
     private String message;
 
-    public KamarDAO getKamar() {return kamar;}
+    public List<KamarDAO> getKamar() { return kamar; }
 
-    public void setKamar(KamarDAO kamar) {this.kamar=kamar;}
+    public void setKamar(List<KamarDAO> kamar) { this.kamar = kamar; }
 
-    public String getMessage() { return message;}
+    public String getMessage() { return message; }
 
-    public void setMessage(String message) {this.message= message;}
+    public void setMessage(String message) { this.message = message; }
 }

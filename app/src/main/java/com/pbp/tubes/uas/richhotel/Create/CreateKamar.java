@@ -78,10 +78,6 @@ public class CreateKamar extends AppCompatActivity {
     }
 
     private void createKamar() {
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<KamarResponse> add = apiService.createKamar(tvNamaKamar.getText().toString(), tvHarga.getText().toString(),
-                tvKapasitas.getText().toString(), tvGambar.getText().toString());
-
         ApiInterface apiServiceCreate = ApiClient.getClient().create(ApiInterface.class);
         Call<KamarResponse> addKamar = apiServiceCreate.createKamar(tvNamaKamar.getText().toString(), tvKapasitas.getText().toString(),
                                                                     tvHarga.getText().toString(), tvGambar.getText().toString());

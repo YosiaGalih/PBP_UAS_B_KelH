@@ -40,6 +40,10 @@ public interface ApiInterface {
     @GET("kamar")
     Call<KamarResponse> getAllKamar(@Query("data")String data);
 
+    @GET("kamar/{id}")
+    Call<KamarResponse> getKamarById(@Path("id")String id,
+                                     @Query("data")String data);
+
     @POST("kamar")
     @FormUrlEncoded
     Call<KamarResponse> createKamar(@Field("nama_kamar")String nama_kamar, @Field("kapasitas")String kapasitas,
@@ -52,7 +56,9 @@ public interface ApiInterface {
                                     @Field("harga")String harga, @Field("imageURL")String image);
 
     @DELETE("kamar/{id}")
-    Call<KamarResponse> deleteKamar(@Path("id")String id);
+    Call<KamarResponse> deleteKamar(@Path("id")String id, @Field("nama_kamar")String nama,
+                                    @Field("kapasitas")String kapasitas, @Field("harga")String harga,
+                                    @Field("imageURL")String image);
 
     //--------------------------------------------API Transaksi--------------------------------------------//
 

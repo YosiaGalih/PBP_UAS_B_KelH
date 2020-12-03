@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".Fragment.DetailUserFragment">
+    tools:context=".Fragment.DetailKamarFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:text="Detail User"/>
+            android:text="Detail Daftar Kamar"/>
 
         <ImageButton
             android:id="@+id/ibClose"
@@ -60,6 +60,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:id="@+id/twGambar"
+                        android:layout_width="330dp"
+                        android:layout_height="100dp"
+                        android:background="@color/grey"/>
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -69,16 +75,16 @@
                             android:layout_alignParentLeft="true"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:text="Nama"
+                            android:text="Nama Kamar"
                             android:textColor="@color/black"/>
                         <TextView
-                            android:id="@+id/twNama"
+                            android:id="@+id/twNamaKamar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_marginEnd="-1dp"
-                            android:hint="Nama"
+                            android:hint="Nama Kamar"
                             android:textAlignment="textEnd"
                             android:textColor="@color/black"
                             android:textSize="20dp"/>
@@ -93,17 +99,16 @@
                             android:layout_alignParentLeft="true"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:text="Age"
+                            android:text="Harga Kamar"
                             android:textColor="@color/black"/>
                         <TextView
-                            android:id="@+id/twAge
-"
+                            android:id="@+id/twHarga"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_marginEnd="-1dp"
-                            android:hint="Age"
+                            android:hint="Harga Kamar"
                             android:textAlignment="textEnd"
                             android:textColor="@color/black"
                             android:textSize="20dp"/>
@@ -118,20 +123,21 @@
                             android:layout_alignParentLeft="true"
                             android:textSize="20dp"
                             android:textStyle="bold"
-                            android:text="Email"
+                            android:text="Kapasitas"
                             android:textColor="@color/black"/>
                         <TextView
-                            android:id="@+id/twEmail"
+                            android:id="@+id/twKapasitas"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_marginEnd="-1dp"
-                            android:hint="Email"
+                            android:hint="Fakultas"
                             android:textAlignment="textEnd"
                             android:textColor="@color/black"
                             android:textSize="20dp"/>
                     </RelativeLayout>
+
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

@@ -53,44 +53,34 @@ public class CreateKamar extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createKamar();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                if(tvNamaKamar.getText().toString().isEmpty()) {
+                    tvNamaKamar.setError("Nama Kamar Harus Diisi");
+                    tvNamaKamar.requestFocus();
+                }
+                else if(tvHarga.getText().toString().isEmpty()) {
+                    tvHarga.setError("Harga Kamar Harus Diisi");
+                    tvHarga.requestFocus();
+                }
+                else if(tvKapasitas.getText().toString().isEmpty()) {
+                    tvKapasitas.setError("Kapasitas Kamar Harus Diisi");
+                    tvKapasitas.requestFocus();
+                }
+                else if(tvGambar.getText().toString().isEmpty()){
+                    tvGambar.setError("Gambar Kamar Harus Diisi");
+                    tvGambar.requestFocus();
+                }
+                else{
+                    createKamar();
+                }
 
             }
         });
     }
 
     private void createKamar() {
-        String namaKamar = tvNamaKamar.getText().toString().trim();
-        String hargaKamar = tvHarga.getText().toString().trim();
-        String kapasitas = tvKapasitas.getText().toString().trim();
-        String gambar = tvGambar.getText().toString().trim();
-
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<KamarResponse> add = apiService.createKamar(tvNamaKamar.getText().toString(), tvHarga.getText().toString(),
                 tvKapasitas.getText().toString(), tvGambar.getText().toString());
-
-        if(namaKamar.isEmpty()){
-            tvNamaKamar.setError("Nama Kamar is required!");
-            tvNamaKamar.requestFocus();
-            return;
-        }
-        if(hargaKamar.isEmpty()){
-            tvHarga.setError("Harga Kamar is required!");
-            tvHarga.requestFocus();
-            return;
-        }
-        if(kapasitas.isEmpty()){
-            tvKapasitas.setError("Kapasitas Kamar is required!");
-            tvKapasitas.requestFocus();
-            return;
-        }
-        if(gambar.isEmpty()){
-            tvGambar.setError("Gambar Kamar is required!");
-            tvGambar.requestFocus();
-            return;
-        }
 
         ApiInterface apiServiceCreate = ApiClient.getClient().create(ApiInterface.class);
         Call<KamarResponse> addKamar = apiServiceCreate.createKamar(tvNamaKamar.getText().toString(), tvKapasitas.getText().toString(),
@@ -101,6 +91,9 @@ public class CreateKamar extends AppCompatActivity {
                 Toast.makeText(CreateKamar.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                 onBackPressed();
 
+                Log.i("create", "msg: "+ new GsonBuilder().setPrettyPrinting().create().toJson(response));
+                Intent intent = new Intent (getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -111,7 +104,6 @@ public class CreateKamar extends AppCompatActivity {
 
             }
         });
-
 
     }
 }

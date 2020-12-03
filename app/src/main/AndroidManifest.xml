@@ -29,6 +29,7 @@
         <activity android:name=".About"></activity>
         <activity android:name=".SignOut.SignOut"></activity>
         <activity android:name=".SignOut.SignOutUser"></activity>
+        <activity android:name=".Edit.EditUser"></activity>
         <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

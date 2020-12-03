@@ -9,15 +9,15 @@ import java.util.List;
 public class KamarResponse {
     @SerializedName("data")
     @Expose
-    private List<KamarDAO> kamar_hotels = null;
+    private KamarDAO kamar = null;
 
     @SerializedName("message")
     @Expose
     private String message;
 
-    public List<KamarDAO> getKamar_hotels() {return kamar_hotels;}
+    public KamarDAO getKamar() {return kamar;}
 
-    public void setKamar_hotels(List<KamarDAO> kamar_hotels) {this.kamar_hotels=kamar_hotels;}
+    public void setKamar(KamarDAO kamar) {this.kamar=kamar;}
 
     public String getMessage() { return message;}
 

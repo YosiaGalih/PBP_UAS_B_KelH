@@ -3,6 +3,7 @@ package com.pbp.tubes.uas.richhotel.Edit;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,11 +32,17 @@ public class EditUser extends AppCompatActivity {
     private MaterialButton btnEdit, btnCancel;
     private String email,id;
     private ProgressDialog progressDialog;
+    private SharedPreferences sharedPreferences;
+    public static final int mode = Activity.MODE_PRIVATE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_user);
+
+        sharedPreferences = getSharedPreferences("Login", mode);
+        email = sharedPreferences.getString("email", "");
+        id = sharedPreferences.getString("id", "");
 
         btnEdit = findViewById(R.id.btnUpdate);
         btnCancel = findViewById(R.id.btnCancel);
@@ -47,8 +54,8 @@ public class EditUser extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
 
-        id = getIntent().getStringExtra("id");
-        Log.i("EDIT USER ID", "msg: " +id);
+//        id = getIntent().getStringExtra("id");
+//        Log.i("EDIT USER ID", "msg: " +id);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override

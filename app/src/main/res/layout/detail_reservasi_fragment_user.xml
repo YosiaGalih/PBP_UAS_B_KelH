@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Fragment.DetailKamarFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Detail Daftar Reservasi"/>
+
+        <ImageButton
+            android:id="@+id/ibClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_baseline_close_24"
+            android:foreground="?android:attr/selectableItemBackground"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="6dp">
+
+            <LinearLayout
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:text="Nama Pemesan"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/twNamaPemesan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="-1dp"
+                            android:hint="Nama Pemesan"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:text="ID Pemesan"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/twIdPemesan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="-1dp"
+                            android:hint="ID Pemesan"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:text="Alamat Pemesan"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/twAlamat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="-1dp"
+                            android:hint="Alamat Pemesan"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:text="Pilihan Kamar"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/twPilihan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="-1dp"
+                            android:hint="Alamat Pemesan"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:text="Tanggal Check In"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/twCheckIn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="-1dp"
+                            android:hint="Tanggal Check In"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:text="Tanggal Check Out"
+                            android:textColor="@color/black"/>
+                        <TextView
+                            android:id="@+id/twCheckOut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="-1dp"
+                            android:hint="Check Out"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="80dp"
+                android:layout_weight="0.8"
+                android:backgroundTint="@color/pink"
+                android:text="DELETE"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:layout_weight="0.8"
+                android:backgroundTint="@color/choco"
+                android:text="EDIT"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

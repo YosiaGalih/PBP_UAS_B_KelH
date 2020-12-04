@@ -23,7 +23,7 @@
         <activity android:name=".Create.CreateReservasi"></activity>
         <activity android:name=".Daftar.DaftarKamarAdmin"></activity>
         <activity android:name=".Daftar.DaftarKamarUser"></activity>
-        <activity android:name=".Daftar.DaftarReservasiAdmin"></activity>
+<!--        <activity android:name=".Daftar.DaftarReservasiAdmin"></activity>-->
         <activity android:name=".Daftar.DaftarReservasiUser"></activity>
         <activity android:name=".Profil.ProfilAdmin"></activity>
         <activity android:name=".Profil.ProfilUser"></activity>
@@ -31,6 +31,9 @@
         <activity android:name=".SignOut.SignOut"></activity>
         <activity android:name=".SignOut.SignOutUser"></activity>
         <activity android:name=".Edit.EditUser"></activity>
+        <activity android:name=".Create.CreateReservasiUser"></activity>
+<!--        <activity android:name=".UnitTesting.StartUserProfileActivity"></activity>-->
+<!--        <activity android:name=".UnitTesting.LoginActivity"></activity>-->
         <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -18,6 +18,9 @@ import com.google.gson.GsonBuilder;
 import com.pbp.tubes.uas.richhotel.About;
 import com.pbp.tubes.uas.richhotel.Api.ApiClient;
 import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
+import com.pbp.tubes.uas.richhotel.Create.CreateReservasi;
+import com.pbp.tubes.uas.richhotel.Daftar.DaftarKamarUser;
+import com.pbp.tubes.uas.richhotel.Daftar.DaftarReservasiUser;
 import com.pbp.tubes.uas.richhotel.Profil.ProfilUser;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.Response.UserResponse;
@@ -35,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
     private SharedPreferences sharedPreferences;
-    public RelativeLayout  btnAbout, btnSignOut, btnProfile;
+    public RelativeLayout  btnAbout, btnSignOut, btnProfile, btnKamar, btnReservasi, btnDaftarReservasi;
     public static final int mode = Activity.MODE_PRIVATE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,9 @@ public class MainActivity2 extends AppCompatActivity {
         btnAbout = (RelativeLayout) findViewById(R.id.about);
         btnSignOut = (RelativeLayout) findViewById(R.id.sign_out);
         btnProfile = (RelativeLayout) findViewById(R.id.profil);
+        btnKamar = findViewById(R.id.daftarKamarUser);
+        btnReservasi = findViewById(R.id.createReservasi);
+        btnDaftarReservasi = findViewById(R.id.daftar_reservasi);
 
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +77,30 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ProfilUser.class);
+                startActivity(intent);
+            }
+        });
+
+        btnKamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DaftarKamarUser.class);
+                startActivity(intent);
+            }
+        });
+
+        btnReservasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CreateReservasi.class);
+                startActivity(intent);
+            }
+        });
+
+        btnDaftarReservasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DaftarReservasiUser.class);
                 startActivity(intent);
             }
         });

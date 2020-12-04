@@ -10,15 +10,15 @@ import java.util.List;
 public class TransaksiResponse {
     @SerializedName("data")
     @Expose
-    private List<TransaksiDAO> transaksis = null;
+    private TransaksiDAO transaksis = null;
 
     @SerializedName("message")
     @Expose
     private String message;
 
-    public List<TransaksiDAO> getTransaksis() {return transaksis;}
+    public TransaksiDAO getTransaksis() {return transaksis;}
 
-    public void setTransaksis(List<TransaksiDAO> transaksis) {this.transaksis=transaksis;}
+    public void setTransaksis(TransaksiDAO transaksis) {this.transaksis=transaksis;}
 
     public String getMessage() { return message;}
 

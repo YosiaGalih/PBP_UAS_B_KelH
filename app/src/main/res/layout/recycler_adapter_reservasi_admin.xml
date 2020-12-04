@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginHorizontal="8dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/NamaPemesantW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Nama Pemesan"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/twNamaPemesanr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-23dp"
+                android:layout_marginStart="230dp"
+                android:hint="Nama Pemesan"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/IdtW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="ID Pemesan"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/twID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="ID Pemesan"
+                android:textColor="@color/black"
+                android:layout_marginTop="-22dp"
+                android:layout_marginStart="230dp"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/AlamattW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Alamat Pemesan"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/twAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Alamat"
+                android:textColor="@color/black"
+                android:layout_marginTop="-22dp"
+                android:layout_marginStart="230dp"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/PilihanKamartW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Pilihan Kamar"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/twPilihanKamar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Pilihan"
+                android:textColor="@color/black"
+                android:layout_marginTop="-22dp"
+                android:layout_marginStart="230dp"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/CheckIntW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Tanggal Check In"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/twCheckIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Check In"
+                android:textColor="@color/black"
+                android:layout_marginTop="-22dp"
+                android:layout_marginStart="230dp"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/CheckOutW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Tanggal Check Out"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/twCheckOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Check Out"
+                android:textColor="@color/black"
+                android:layout_marginTop="-22dp"
+                android:layout_marginStart="230dp"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

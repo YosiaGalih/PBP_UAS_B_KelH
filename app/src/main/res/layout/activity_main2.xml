@@ -35,7 +35,7 @@
                 app:cardElevation="3dp">
 
                 <RelativeLayout
-                    android:id="@+id/lihat"
+                    android:id="@+id/createReservasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="3dp"
@@ -78,7 +78,7 @@
                 app:cardElevation="3dp">
 
                 <RelativeLayout
-                    android:id="@+id/sewa"
+                    android:id="@+id/daftarKamarUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="3dp"
@@ -226,7 +226,7 @@
                 app:cardElevation="3dp">
 
                 <RelativeLayout
-                    android:id="@+id/lokasi_hotel"
+                    android:id="@+id/daftar_reservasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="3dp"

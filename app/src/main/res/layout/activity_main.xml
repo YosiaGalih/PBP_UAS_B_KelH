@@ -226,7 +226,7 @@
                 app:cardElevation="3dp">
 
                 <RelativeLayout
-                    android:id="@+id/lokasi_hotel"
+                    android:id="@+id/daftar_reservasi_admin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="3dp"

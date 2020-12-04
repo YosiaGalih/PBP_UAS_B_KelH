@@ -65,8 +65,8 @@ public interface ApiInterface {
     Call<TransaksiResponse> getAllTransaksi(@Query("data")String data);
 
     @GET("transaksi/{id_pemesan}")
-    Call<TransaksiResponse> gettTransaksiByIdPemesan(@Path("id_pemesan")String id_pemesan,
-                                              @Query("data")String data);
+    Call<TransaksiResponse> getTransaksiByIdPemesan(@Path("id_pemesan")String id_pemesan,
+                                                          @Query("data")String data);
 
     @POST("transaksi")
     @FormUrlEncoded

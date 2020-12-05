@@ -87,5 +87,5 @@ public interface ApiInterface {
                                             @Field("tgl_check_in")String tglCheckIn, @Field("tgl_check_out")String tglCheckOut);
 
     @DELETE("transaksi/{id}")
-    Call<TransaksiResponse> deleteTransaksi(@Path("id")String id);
+    Call<TransaksiResponseObject> deleteTransaksi(@Path("id")String id);
 }

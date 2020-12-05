@@ -1,7 +1,9 @@
 package com.pbp.tubes.uas.richhotel.Edit;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +18,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.pbp.tubes.uas.richhotel.Api.ApiClient;
 import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
 import com.pbp.tubes.uas.richhotel.R;
+import com.pbp.tubes.uas.richhotel.Response.KamarResponseObject;
+import com.pbp.tubes.uas.richhotel.Response.TransaksiResponse;
 import com.pbp.tubes.uas.richhotel.Response.TransaksiResponseObject;
 
 import java.text.SimpleDateFormat;
@@ -30,7 +34,7 @@ public class EditReservasiUser extends AppCompatActivity {
 
     TextInputEditText twNamaPemesan, twIDPemesan, twAlamatPemesan, twNamaKamar;
     AutoCompleteTextView twTglCheckIn, twTglCheckOut;
-    Button btnUpdate, btnCancel;
+    Button btnUpdate, btnCancel, btnDelete;
 
     private ProgressDialog progressDialog;
     private String idTransaksi;
@@ -58,6 +62,14 @@ public class EditReservasiUser extends AppCompatActivity {
 
         btnCancel = findViewById(R.id.btnCancel);
         btnUpdate = findViewById(R.id.btnCreate);
+        btnDelete = findViewById(R.id.delete);
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteReservasi();
+            }
+        });
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
 
@@ -201,5 +213,39 @@ public class EditReservasiUser extends AppCompatActivity {
                 Log.i("response", "msg: " +t.getMessage());
             }
         });
+    }
+
+    private void deleteReservasi(){
+        ApiInterface apiDeleteReservasi = ApiClient.getClient().create(ApiInterface.class);
+        Call<TransaksiResponseObject> deleteReservasi = apiDeleteReservasi.deleteTransaksi(idTransaksi);
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        deleteReservasi.enqueue(new Callback<TransaksiResponseObject>() {
+                            @Override
+                            public void onResponse(Call<TransaksiResponseObject> call, Response<TransaksiResponseObject> response) {
+                                Toast.makeText(EditReservasiUser.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                                onBackPressed();
+                            }
+
+                            @Override
+                            public void onFailure(Call<TransaksiResponseObject> call, Throwable t) {
+                                Toast.makeText(EditReservasiUser.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure want to delete this ?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
     }
 }

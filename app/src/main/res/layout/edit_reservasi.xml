@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Create.CreateReservasiUser">
+    tools:context=".Edit.EditReservasiUser">
 
     <LinearLayout
         android:id="@+id/navbar"
@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="0dp"
-            android:layout_marginStart="45dp"
-            android:text="CREATE RESERVASI"
+            android:layout_marginStart="65dp"
+            android:text="EDIT RESERVASI"
             android:textColor="@color/black"
             android:textStyle="bold" />
     </LinearLayout>
@@ -159,7 +159,7 @@
             android:id="@+id/btnCreate"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:text="CREATE"
+            android:text="Save"
             android:textColor="@color/black"
             android:layout_alignParentRight="true"
             android:layout_marginHorizontal="10dp"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Daftar.DaftarReservasiUser">
+    tools:context=".Daftar.DaftarReservasiAdmin">
 
     <LinearLayout
         android:id="@+id/upper"
@@ -37,7 +37,7 @@
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="Show List Transaksi User"/>
+                android:text="Semua transaksi user"/>
         </LinearLayout>
 
         <LinearLayout

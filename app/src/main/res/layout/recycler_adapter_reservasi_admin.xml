@@ -10,7 +10,7 @@
     app:cardElevation="6dp">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayouta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -19,27 +19,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-
-            <TextView
-                android:id="@+id/NamaPemesantW"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Nama Pemesan"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:id="@+id/twNamaPemesanr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-23dp"
-                android:layout_marginStart="230dp"
-                android:hint="Nama Pemesan"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/IdtW"
@@ -50,7 +32,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/twID"
+                android:id="@+id/twIDa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="ID Pemesan"
@@ -58,6 +40,26 @@
                 android:layout_marginTop="-22dp"
                 android:layout_marginStart="230dp"
                 android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/NamaPemesantW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Nama Pemesan"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/twNamaPemesana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-23dp"
+                android:layout_marginStart="230dp"
+                android:hint="Nama Pemesan"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+
 
             <TextView
                 android:id="@+id/AlamattW"
@@ -68,7 +70,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/twAlamat"
+                android:id="@+id/twAlamata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Alamat"
@@ -86,7 +88,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/twPilihanKamar"
+                android:id="@+id/twPilihanKamara"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Pilihan"
@@ -104,7 +106,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/twCheckIn"
+                android:id="@+id/twCheckIna"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Check In"
@@ -122,7 +124,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/twCheckOut"
+                android:id="@+id/twCheckOuta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Check Out"

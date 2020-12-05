@@ -69,6 +69,10 @@ public interface ApiInterface {
     Call<TransaksiResponse> getTransaksiByIdPemesan(@Path("id_pemesan")String id_pemesan,
                                                           @Query("data")String data);
 
+    @GET("transaksi2/{id}")
+    Call<TransaksiResponseObject> getTransaksiById(@Path("id")String id,
+                                                    @Query("data")String data);
+
     @POST("transaksi")
     @FormUrlEncoded
     Call<TransaksiResponseObject> createTransaksi(@Field("nama")String nama_pemesan, @Field("id_pemesan")String id,
@@ -77,8 +81,8 @@ public interface ApiInterface {
 
     @PUT("transaksi/{id}")
     @FormUrlEncoded
-    Call<TransaksiResponse> updateTransaksi(@Path("id")String id,
-                                            @Field("nama_pemesan")String nama_pemesan, @Field("id_pemesan")String id_pemesan,
+    Call<TransaksiResponseObject> updateTransaksi(@Path("id")String idTransaksi,
+                                            @Field("nama")String nama_pemesan, @Field("id_pemesan")String id_pemesan,
                                             @Field("alamat")String alamat, @Field("pilihan_kamar")String pilihan,
                                             @Field("tgl_check_in")String tglCheckIn, @Field("tgl_check_out")String tglCheckOut);
 

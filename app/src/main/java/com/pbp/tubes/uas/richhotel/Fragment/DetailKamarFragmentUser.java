@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.pbp.tubes.uas.richhotel.Api.ApiClient;
 import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
 import com.pbp.tubes.uas.richhotel.Edit.EditKamar;
@@ -86,10 +88,10 @@ public class DetailKamarFragmentUser extends DialogFragment {
                 twNama.setText(sNama);
                 twHarga.setText(sHarga);
                 twKapasitas.setText(sKapasitas);
-//                try{
-//                    twGambar.setImageResource(Integer.parseInt(sGambar));
-//
-//                }catch (NumberFormatException e){}
+                Glide.with(twGambar.getContext())
+                        .load(sGambar)
+                        .apply(new RequestOptions().centerCrop())
+                        .into(twGambar);
                 progressDialog.dismiss();
             }
 

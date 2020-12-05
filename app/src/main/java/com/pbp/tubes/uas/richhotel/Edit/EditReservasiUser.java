@@ -1,9 +1,7 @@
-package com.pbp.tubes.uas.richhotel.Create;
+package com.pbp.tubes.uas.richhotel.Edit;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +16,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.pbp.tubes.uas.richhotel.Api.ApiClient;
 import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
 import com.pbp.tubes.uas.richhotel.R;
-import com.pbp.tubes.uas.richhotel.Response.KamarResponseObject;
 import com.pbp.tubes.uas.richhotel.Response.TransaksiResponseObject;
 
 import java.text.SimpleDateFormat;
@@ -29,18 +26,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateReservasiUser extends AppCompatActivity {
+public class EditReservasiUser extends AppCompatActivity {
 
     TextInputEditText twNamaPemesan, twIDPemesan, twAlamatPemesan, twNamaKamar;
     AutoCompleteTextView twTglCheckIn, twTglCheckOut;
-    Button btnCreate, btnCancel;
+    Button btnUpdate, btnCancel;
 
-    private String sNamaKamar;
     private ProgressDialog progressDialog;
-    private String idKamar, idPemesan;
-
-    private SharedPreferences sharedPreferences;
-    public static final int mode = Activity.MODE_PRIVATE;
+    private String idTransaksi;
 
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -48,16 +41,13 @@ public class CreateReservasiUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_reservasi);
-        sharedPreferences = getSharedPreferences("Login", mode);
-        idPemesan = sharedPreferences.getString("id", "");
+        setContentView(R.layout.edit_reservasi);
 
-        idKamar = getIntent().getStringExtra("namaKamarId");
+        idTransaksi = getIntent().getStringExtra("idTransaksi");
 
         twNamaPemesan = findViewById(R.id.etNamaPemesan);
         twAlamatPemesan = findViewById(R.id.etAlamatPemesan);
         twIDPemesan = findViewById(R.id.etIDPemesan);
-        twIDPemesan.setText(idPemesan);
         twNamaKamar = findViewById(R.id.etPilihanKamar);
         twTglCheckIn = findViewById(R.id.etTglCheckIn);
         twTglCheckOut = findViewById(R.id.etTglCheckOut);
@@ -67,24 +57,9 @@ public class CreateReservasiUser extends AppCompatActivity {
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
         btnCancel = findViewById(R.id.btnCancel);
-        btnCreate = findViewById(R.id.btnCreate);
+        btnUpdate = findViewById(R.id.btnCreate);
 
-        twTglCheckIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDateDialog();
-            }
-        });
-
-        twTglCheckOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDateDialog2();
-            }
-        });
-
-
-        btnCreate.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -107,9 +82,23 @@ public class CreateReservasiUser extends AppCompatActivity {
                     twTglCheckOut.setError("Tanggal Check Out Harus Diisi");
                     twTglCheckOut.requestFocus();
                 } else {
-                    createReservasi();
+                    updateReservasi();
 
                 }
+            }
+        });
+
+        twTglCheckIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog();
+            }
+        });
+
+        twTglCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog2();
             }
         });
 
@@ -119,7 +108,7 @@ public class CreateReservasiUser extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        loadKamarById(idKamar);
+        loadTransaksiById(idTransaksi);
     }
 
     private void showDateDialog(){
@@ -158,41 +147,45 @@ public class CreateReservasiUser extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private void loadKamarById(String id) {
-        ApiInterface apiServiceKamarId = ApiClient.getClient().create(ApiInterface.class);
-        Call<KamarResponseObject> getKamar = apiServiceKamarId.getKamarById(id, "data");
+    private void loadTransaksiById(String id) {
+        ApiInterface apiServiceTransaksiId = ApiClient.getClient().create(ApiInterface.class);
+        Call<TransaksiResponseObject> getTransaksi = apiServiceTransaksiId.getTransaksiById(id, "data");
 
-        getKamar.enqueue(new Callback<KamarResponseObject>() {
+        getTransaksi.enqueue(new Callback<TransaksiResponseObject>() {
             @Override
-            public void onResponse(Call<KamarResponseObject> call, Response<KamarResponseObject> response) {
-                sNamaKamar = response.body().getKamar().getNama_kamar();
-                twNamaKamar.setText(sNamaKamar);
+            public void onResponse(Call<TransaksiResponseObject> call, Response<TransaksiResponseObject> response) {
+                twNamaPemesan.setText(response.body().getTransaksi().getNama());
+                twNamaKamar.setText(response.body().getTransaksi().getPilihan_kamar());
+                twIDPemesan.setText(response.body().getTransaksi().getId_pemesan());
+                twAlamatPemesan.setText(response.body().getTransaksi().getAlamat());
+                twTglCheckIn.setText(response.body().getTransaksi().getTglCheckIn());
+                twTglCheckOut.setText(response.body().getTransaksi().getTglCheckOut());
                 progressDialog.dismiss();
             }
 
             @Override
-            public void onFailure(Call<KamarResponseObject> call, Throwable t) {
-                Toast.makeText(CreateReservasiUser.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            public void onFailure(Call<TransaksiResponseObject> call, Throwable t) {
+                Toast.makeText(EditReservasiUser.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
             }
         });
     }
 
-    private void createReservasi() {
-        ApiInterface apiServiceCreateReservasi = ApiClient.getClient().create(ApiInterface.class);
-        Call<TransaksiResponseObject> addReservasi = apiServiceCreateReservasi.createTransaksi(twNamaPemesan.getText().toString(), twIDPemesan.getText().toString(),
+    private void updateReservasi() {
+        ApiInterface apiServiceUpdateReservasi = ApiClient.getClient().create(ApiInterface.class);
+        Call<TransaksiResponseObject> updateReservasi = apiServiceUpdateReservasi.updateTransaksi(idTransaksi, twNamaPemesan.getText().toString(), twIDPemesan.getText().toString(),
                                                                                         twAlamatPemesan.getText().toString(), twNamaKamar.getText().toString(),
                                                                                         twTglCheckIn.getText().toString(), twTglCheckOut.getText().toString());
 
-        addReservasi.enqueue(new Callback<TransaksiResponseObject>() {
+        updateReservasi.enqueue(new Callback<TransaksiResponseObject>() {
             @Override
             public void onResponse(Call<TransaksiResponseObject> call, Response<TransaksiResponseObject> response) {
                 try {
-                    Toast.makeText(CreateReservasiUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditReservasiUser.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     onBackPressed();
 
                 }catch (Exception e){
-                    Toast.makeText(CreateReservasiUser.this, "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditReservasiUser.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -203,7 +196,7 @@ public class CreateReservasiUser extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<TransaksiResponseObject> call, Throwable t) {
-                Toast.makeText(CreateReservasiUser.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(EditReservasiUser.this, t.getMessage(), Toast.LENGTH_LONG).show();
 
                 Log.i("response", "msg: " +t.getMessage());
             }

@@ -1,6 +1,7 @@
 package com.pbp.tubes.uas.richhotel.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.pbp.tubes.uas.richhotel.Dao.KamarDAO;
 import com.pbp.tubes.uas.richhotel.Dao.TransaksiDAO;
+import com.pbp.tubes.uas.richhotel.Edit.EditReservasiUser;
 import com.pbp.tubes.uas.richhotel.Fragment.DetailKamarFragmentUser;
 import com.pbp.tubes.uas.richhotel.R;
 
@@ -51,7 +53,6 @@ public class ReservasiUserRecyclerAdapter extends RecyclerView.Adapter <Reservas
         final TransaksiDAO transaksi = filteredDataList.get(position);
 
         holder.twNamaPemesan.setText(transaksi.getNama());
-        holder.twIdPemesan.setText(transaksi.getId_pemesan());
         holder.twAlamatPemesan.setText(transaksi.getAlamat());
         holder.twPilihanKamar.setText(transaksi.getPilihan_kamar());
         holder.twTanggalCheckIn.setText(transaksi.getTglCheckIn());
@@ -60,13 +61,10 @@ public class ReservasiUserRecyclerAdapter extends RecyclerView.Adapter <Reservas
         holder.mParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager manager = ((AppCompatActivity) context).getSupportFragmentManager();
-                DetailKamarFragmentUser dialog = new DetailKamarFragmentUser();
-                dialog.show(manager, "dialog");
+                Intent i = new Intent(view.getContext(), EditReservasiUser.class);
+                i.putExtra("idTransaksi", transaksi.getId());
+                context.startActivity(i);
 
-                Bundle args = new Bundle();
-                args.putString("id", transaksi.getId_pemesan());
-                dialog.setArguments(args);
             }
         });
     }
@@ -83,7 +81,6 @@ public class ReservasiUserRecyclerAdapter extends RecyclerView.Adapter <Reservas
         public RoomViewHolder(@NonNull View itemView) {
             super(itemView);
             twNamaPemesan = itemView.findViewById(R.id.twNamaPemesanr);
-            twIdPemesan = itemView.findViewById(R.id.twIDr);
             twAlamatPemesan = itemView.findViewById(R.id.twAlamatr);
             twPilihanKamar = itemView.findViewById(R.id.twPilihanKamarr);
             twTanggalCheckIn = itemView.findViewById(R.id.twCheckInr);

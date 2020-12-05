@@ -14,6 +14,7 @@ import com.pbp.tubes.uas.richhotel.About;
 import com.pbp.tubes.uas.richhotel.Create.CreateKamar;
 import com.pbp.tubes.uas.richhotel.Daftar.DaftarKamarAdmin;
 //import com.pbp.tubes.uas.richhotel.Daftar.DaftarReservasiAdmin;
+import com.pbp.tubes.uas.richhotel.Daftar.DaftarReservasiAdmin;
 import com.pbp.tubes.uas.richhotel.Profil.ProfilAdmin;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.SignOut.SignOut;
@@ -73,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btnDaftarReservasi.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), DaftarReservasiAdmin.class);
-//                startActivity(intent);
-//            }
-//        });
+        btnDaftarReservasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DaftarReservasiAdmin.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

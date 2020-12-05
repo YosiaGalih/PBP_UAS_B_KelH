@@ -10,6 +10,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +49,7 @@ public class ReservasiUserRecyclerAdapter extends RecyclerView.Adapter <Reservas
     @Override
     public void onBindViewHolder(@NonNull ReservasiUserRecyclerAdapter.RoomViewHolder holder, int position) {
         final TransaksiDAO transaksi = filteredDataList.get(position);
+
         holder.twNamaPemesan.setText(transaksi.getNama());
         holder.twIdPemesan.setText(transaksi.getId_pemesan());
         holder.twAlamatPemesan.setText(transaksi.getAlamat());
@@ -80,13 +82,13 @@ public class ReservasiUserRecyclerAdapter extends RecyclerView.Adapter <Reservas
 
         public RoomViewHolder(@NonNull View itemView) {
             super(itemView);
-            twNamaPemesan = itemView.findViewById(R.id.twNamaKamar);
-            twIdPemesan = itemView.findViewById(R.id.twHargaKamar);
-            twAlamatPemesan = itemView.findViewById(R.id.twKapasitas);
-            twPilihanKamar = itemView.findViewById(R.id.etPilihanKamar);
-            twTanggalCheckIn = itemView.findViewById(R.id.etTglCheckIn);
-            twTglCheckOut = itemView.findViewById(R.id.etTglCheckOut);
-            mParent = itemView.findViewById(R.id.linearLayout);
+            twNamaPemesan = itemView.findViewById(R.id.twNamaPemesanr);
+            twIdPemesan = itemView.findViewById(R.id.twIDr);
+            twAlamatPemesan = itemView.findViewById(R.id.twAlamatr);
+            twPilihanKamar = itemView.findViewById(R.id.twPilihanKamarr);
+            twTanggalCheckIn = itemView.findViewById(R.id.twCheckInr);
+            twTglCheckOut = itemView.findViewById(R.id.twCheckOutr);
+            mParent = itemView.findViewById(R.id.linearLayoutr);
         }
     }
 

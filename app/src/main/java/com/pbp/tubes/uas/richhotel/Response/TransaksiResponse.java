@@ -2,7 +2,6 @@ package com.pbp.tubes.uas.richhotel.Response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.pbp.tubes.uas.richhotel.Dao.KamarDAO;
 import com.pbp.tubes.uas.richhotel.Dao.TransaksiDAO;
 
 import java.util.List;
@@ -10,15 +9,19 @@ import java.util.List;
 public class TransaksiResponse {
     @SerializedName("data")
     @Expose
-    private TransaksiDAO transaksis = null;
+    private List<TransaksiDAO> transaksi = null;
 
     @SerializedName("message")
     @Expose
     private String message;
 
-    public TransaksiDAO getTransaksis() {return transaksis;}
+    public List<TransaksiDAO> getTransaksi() {
+        return transaksi;
+    }
 
-    public void setTransaksis(TransaksiDAO transaksis) {this.transaksis=transaksis;}
+    public void setTransaksi(List<TransaksiDAO> transaksi) {
+        this.transaksi = transaksi;
+    }
 
     public String getMessage() { return message;}
 

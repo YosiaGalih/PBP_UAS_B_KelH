@@ -85,12 +85,18 @@ public class CreateKamar extends AppCompatActivity {
         addKamar.enqueue(new Callback<KamarResponseObject>() {
             @Override
             public void onResponse(Call<KamarResponseObject> call, Response<KamarResponseObject> response) {
-                Toast.makeText(CreateKamar.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
-                onBackPressed();
+                try {
+                    Toast.makeText(CreateKamar.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    onBackPressed();
 
-                Log.i("create", "msg: "+ new GsonBuilder().setPrettyPrinting().create().toJson(response));
-                Intent intent = new Intent (getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                }catch (Exception e){
+                    Toast.makeText(CreateKamar.this, "Nama kamar sudah ada / nama terlalu panjang", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+//                Log.i("create", "msg: "+ new GsonBuilder().setPrettyPrinting().create().toJson(response));
+//                Intent intent = new Intent (getApplicationContext(), MainActivity.class);
+//                startActivity(intent);
             }
 
             @Override

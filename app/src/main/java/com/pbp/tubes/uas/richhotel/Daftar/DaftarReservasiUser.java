@@ -1,6 +1,8 @@
 package com.pbp.tubes.uas.richhotel.Daftar;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -14,14 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.pbp.tubes.uas.richhotel.Adapter.KamarRecyclerAdapterUser;
 import com.pbp.tubes.uas.richhotel.Adapter.ReservasiUserRecyclerAdapter;
 import com.pbp.tubes.uas.richhotel.Api.ApiClient;
 import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
-import com.pbp.tubes.uas.richhotel.Dao.KamarDAO;
 import com.pbp.tubes.uas.richhotel.Dao.TransaksiDAO;
 import com.pbp.tubes.uas.richhotel.R;
-import com.pbp.tubes.uas.richhotel.Response.KamarResponse;
 import com.pbp.tubes.uas.richhotel.Response.TransaksiResponse;
 
 import java.util.ArrayList;
@@ -41,11 +40,16 @@ public class DaftarReservasiUser extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private ShimmerFrameLayout shimmerFrameLayout;
     private String sIdPemesan;
+    private SharedPreferences sharedPreferences;
+    public static final int mode = Activity.MODE_PRIVATE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.daftar_reservasi_user);
+
+        sharedPreferences = getSharedPreferences("Login", mode);
+        sIdPemesan = sharedPreferences.getString("id", "");
 
         shimmerFrameLayout = findViewById(R.id.shimmerLayout);
         shimmerFrameLayout.startShimmer();
@@ -69,6 +73,7 @@ public class DaftarReservasiUser extends AppCompatActivity {
             }
         });
 
+        loadTransaksiById(sIdPemesan);
     }
 
     protected void onActivityResult(int requestCode, int resultCode,
@@ -89,13 +94,21 @@ public class DaftarReservasiUser extends AppCompatActivity {
         callGetTransaksi.enqueue(new Callback<TransaksiResponse>() {
             @Override
             public void onResponse(Call<TransaksiResponse> call, Response<TransaksiResponse> response) {
-                generateDataList((List<TransaksiDAO>) response.body().getTransaksis());
+                try {
+                    generateDataList((List<TransaksiDAO>) response.body().getTransaksi());
+
+                }catch (Exception e){
+                    Toast.makeText(DaftarReservasiUser.this, "Data Kosong", Toast.LENGTH_SHORT).show();
+                    shimmerFrameLayout.stopShimmer();
+
+                }
                 swipeRefreshLayout.setRefreshing(false);
+                shimmerFrameLayout.stopShimmer();
             }
 
             @Override
             public void onFailure(Call<TransaksiResponse> call, Throwable t) {
-                Toast.makeText(DaftarReservasiUser.this, "Kesalahan Jaringan", Toast.LENGTH_LONG).show();
+                Toast.makeText(DaftarReservasiUser.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

@@ -3,6 +3,7 @@ package com.pbp.tubes.uas.richhotel.Api;
 import com.pbp.tubes.uas.richhotel.Response.KamarResponse;
 import com.pbp.tubes.uas.richhotel.Response.KamarResponseObject;
 import com.pbp.tubes.uas.richhotel.Response.TransaksiResponse;
+import com.pbp.tubes.uas.richhotel.Response.TransaksiResponseObject;
 import com.pbp.tubes.uas.richhotel.Response.UserResponse;
 
 import retrofit2.Call;
@@ -70,9 +71,9 @@ public interface ApiInterface {
 
     @POST("transaksi")
     @FormUrlEncoded
-    Call<TransaksiResponse> createTransaksi(@Field("nama")String nama_pemesan, @Field("id_pemesan")String id,
-                                            @Field("alamat")String alamat, @Field("pilihan_kamar")String pilihan,
-                                            @Field("tgl_check_in")String tglCheckIn, @Field("tgl_check_out")String tglCheckOut);
+    Call<TransaksiResponseObject> createTransaksi(@Field("nama")String nama_pemesan, @Field("id_pemesan")String id,
+                                                  @Field("alamat")String alamat, @Field("pilihan_kamar")String pilihan,
+                                                  @Field("tgl_check_in")String tglCheckIn, @Field("tgl_check_out")String tglCheckOut);
 
     @PUT("transaksi/{id}")
     @FormUrlEncoded

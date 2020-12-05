@@ -21,10 +21,12 @@
         <activity android:name=".Create.CreateKamar"></activity>
         <activity android:name=".Edit.EditKamar"></activity>
         <activity android:name=".Create.CreateReservasi"></activity>
+        <activity android:name=".Edit.EditReservasiUser"></activity>
         <activity android:name=".Daftar.DaftarKamarAdmin"></activity>
         <activity android:name=".Daftar.DaftarKamarUser"></activity>
 <!--        <activity android:name=".Daftar.DaftarReservasiAdmin"></activity>-->
         <activity android:name=".Daftar.DaftarReservasiUser"></activity>
+        <activity android:name=".Daftar.DaftarReservasiAdmin"></activity>
         <activity android:name=".Profil.ProfilAdmin"></activity>
         <activity android:name=".Profil.ProfilUser"></activity>
         <activity android:name=".About"></activity>

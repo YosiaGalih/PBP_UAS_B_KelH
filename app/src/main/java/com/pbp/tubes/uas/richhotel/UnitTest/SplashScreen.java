@@ -1,4 +1,4 @@
-package com.pbp.tubes.uas.richhotel.SplashScreen;
+package com.pbp.tubes.uas.richhotel.UnitTest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -56,7 +56,7 @@ public class SplashScreen extends AppCompatActivity {
                     editor.putBoolean("firstTime",firstTime);
                     editor.apply();
 
-                    Intent i  = new Intent(com.pbp.tubes.uas.richhotel.SplashScreen.SplashScreen.this,StartActivity.class);
+                    Intent i  = new Intent(com.pbp.tubes.uas.richhotel.UnitTest.SplashScreen.this,StartActivity.class);
                     startActivity(i);
                     finish();
                 }
@@ -65,7 +65,7 @@ public class SplashScreen extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(com.pbp.tubes.uas.richhotel.SplashScreen.SplashScreen.this, StartActivity.class);
+                    Intent intent = new Intent(com.pbp.tubes.uas.richhotel.UnitTest.SplashScreen.this, StartActivity.class);
                     startActivity(intent);
                     finish();
                 }

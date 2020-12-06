@@ -1,10 +1,8 @@
 package com.pbp.tubes.uas.richhotel.Register;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +21,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.pbp.tubes.uas.richhotel.MainActivity.MainActivity;
 import com.pbp.tubes.uas.richhotel.MainActivity.MainActivity2;
 import com.pbp.tubes.uas.richhotel.R;
-import com.pbp.tubes.uas.richhotel.SplashScreen.StartActivity;
 
 public class LoginUser extends AppCompatActivity implements View.OnClickListener{
 

@@ -21,7 +21,6 @@ import com.pbp.tubes.uas.richhotel.Api.ApiInterface;
 import com.pbp.tubes.uas.richhotel.Create.CreateReservasi;
 import com.pbp.tubes.uas.richhotel.Daftar.DaftarKamarUser;
 import com.pbp.tubes.uas.richhotel.Daftar.DaftarReservasiUser;
-import com.pbp.tubes.uas.richhotel.Location.Location;
 import com.pbp.tubes.uas.richhotel.Profil.ProfilUser;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.Response.UserResponse;
@@ -57,7 +56,6 @@ public class MainActivity2 extends AppCompatActivity {
         btnKamar = findViewById(R.id.daftarKamarUser);
         btnReservasi = findViewById(R.id.createReservasi);
         btnDaftarReservasi = findViewById(R.id.daftar_reservasi);
-        btnLokasi = findViewById(R.id.lokasi_hotel);
 
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,18 +104,6 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        btnLokasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Location.class);
-                startActivity(intent);
-            }
-        });
-
-        //load data dlu, lalu save id sm email ke shared preferences
-        loadUserByEmail(email);
-
     }
 
     @Override

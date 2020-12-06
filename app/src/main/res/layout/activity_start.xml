@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/blueuse"
-    tools:context=".SplashScreen.StartActivity">
+    tools:context=".UnitTest.StartActivity">
 
     <ImageView
         android:id="@+id/mainimg"

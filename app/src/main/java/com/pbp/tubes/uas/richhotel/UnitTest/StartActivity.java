@@ -1,4 +1,4 @@
-package com.pbp.tubes.uas.richhotel.SplashScreen;
+package com.pbp.tubes.uas.richhotel.UnitTest;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

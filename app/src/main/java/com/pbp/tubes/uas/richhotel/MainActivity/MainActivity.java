@@ -15,7 +15,7 @@ import com.pbp.tubes.uas.richhotel.Create.CreateKamar;
 import com.pbp.tubes.uas.richhotel.Daftar.DaftarKamarAdmin;
 //import com.pbp.tubes.uas.richhotel.Daftar.DaftarReservasiAdmin;
 import com.pbp.tubes.uas.richhotel.Daftar.DaftarReservasiAdmin;
-import com.pbp.tubes.uas.richhotel.Location.Location;
+//import com.pbp.tubes.uas.richhotel.Location.Location;
 import com.pbp.tubes.uas.richhotel.Profil.ProfilAdmin;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.SignOut.SignOut;
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         btnKamar = (RelativeLayout) findViewById(R.id.kamar);
         btnDaftarKamar = findViewById(R.id.daftarKamar);
         btnDaftarReservasi = findViewById(R.id.daftar_reservasi_admin);
-        btnLokasi = findViewById(R.id.lokasi_hotel);
 
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,13 +83,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLokasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Location.class);
-                startActivity(intent);
-            }
-        });
 
     }
 

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pbp.tubes.uas.richhotel">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -39,17 +38,16 @@
         <activity android:name=".SignOut.SignOutUser"></activity>
         <activity android:name=".Edit.EditUser"></activity>
         <activity android:name=".Create.CreateReservasiUser"></activity>
-        <activity android:name=".Location.Location"></activity>
 <!--        <activity android:name=".UnitTesting.StartUserProfileActivity"></activity>-->
 <!--        <activity android:name=".UnitTesting.LoginActivity"></activity>-->
-        <activity android:name=".SplashScreen.SplashScreen">
+        <activity android:name=".UnitTest.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashScreen.StartActivity"></activity>
+        <activity android:name=".UnitTest.StartActivity"></activity>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.pbp.tubes.uas.richhotel"

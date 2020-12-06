@@ -24,7 +24,6 @@ import com.pbp.tubes.uas.richhotel.Daftar.DaftarReservasiUser;
 import com.pbp.tubes.uas.richhotel.Profil.ProfilUser;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.Response.UserResponse;
-import com.pbp.tubes.uas.richhotel.SignOut.SignOut;
 import com.pbp.tubes.uas.richhotel.SignOut.SignOutUser;
 
 import retrofit2.Call;
@@ -56,6 +55,8 @@ public class MainActivity2 extends AppCompatActivity {
         btnKamar = findViewById(R.id.daftarKamarUser);
         btnReservasi = findViewById(R.id.createReservasi);
         btnDaftarReservasi = findViewById(R.id.daftar_reservasi);
+
+        loadUserByEmail(email);
 
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +105,7 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     @Override

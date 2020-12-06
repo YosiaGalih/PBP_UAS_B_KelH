@@ -15,7 +15,7 @@ import com.pbp.tubes.uas.richhotel.R;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN = 0;
+    private static int SPLASH_SCREEN = 5000;
     //Variabel
     Animation topAnim, bottomAnim;
     ImageView image;

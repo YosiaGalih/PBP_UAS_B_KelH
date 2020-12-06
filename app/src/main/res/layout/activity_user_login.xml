@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Register.LoginUser">
 
     <TextView
@@ -23,18 +24,18 @@
         android:id="@+id/bannerDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="-220dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="55dp"
         android:text="Your Dreams Hotel"
         android:textSize="18sp"
         android:textStyle="italic" />
 
     <EditText
+        android:layout_marginTop="20dp"
         android:id="@+id/email"
         android:layout_width="295dp"
+        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="-220dp"
-        android:layout_marginTop="120dp"
         android:fontFamily="sans-serif-black"
         android:hint="Email"
         android:textSize="16sp"
@@ -44,8 +45,7 @@
         android:id="@+id/password"
         android:layout_width="295dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
-        android:layout_marginLeft="-295dp"
+        android:layout_gravity="center_horizontal"
         android:hint="Password"
         android:fontFamily="sans-serif-black"
         android:textSize="16sp"
@@ -54,30 +54,27 @@
     <Button
         android:id="@+id/loginUser"
         android:layout_width="295dp"
+        android:layout_gravity="center_horizontal"
         android:layout_height="61dp"
-        android:layout_marginLeft="-295dp"
-        android:layout_marginTop="270dp"
         android:fontFamily="sans-serif-black"
         android:text="LOGIN"
         android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/registerHere"
-        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register Here"
-        android:layout_marginTop="330dp"
-        android:layout_marginLeft="-100dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp"
         android:textColor="@color/choco"/>
 
     <TextView
         android:id="@+id/haveAccount"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
-        android:layout_marginLeft="-295dp"
+        android:layout_gravity="center_horizontal"
         android:text="Have a nice day"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp"

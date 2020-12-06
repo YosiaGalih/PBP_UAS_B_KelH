@@ -61,4 +61,8 @@ public class UserDAO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public UserDAO get(int i) {
+        return get(i);
+    }
 }

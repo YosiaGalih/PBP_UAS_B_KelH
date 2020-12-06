@@ -2,10 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pbp.tubes.uas.richhotel">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -34,6 +39,7 @@
         <activity android:name=".SignOut.SignOutUser"></activity>
         <activity android:name=".Edit.EditUser"></activity>
         <activity android:name=".Create.CreateReservasiUser"></activity>
+        <activity android:name=".Location.Location"></activity>
 <!--        <activity android:name=".UnitTesting.StartUserProfileActivity"></activity>-->
 <!--        <activity android:name=".UnitTesting.LoginActivity"></activity>-->
         <activity android:name=".SplashScreen.SplashScreen">
@@ -44,6 +50,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".SplashScreen.StartActivity"></activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.pbp.tubes.uas.richhotel"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

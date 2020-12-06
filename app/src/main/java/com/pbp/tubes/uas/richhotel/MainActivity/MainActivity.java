@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.pbp.tubes.uas.richhotel.About;
 import com.pbp.tubes.uas.richhotel.Create.CreateKamar;
 import com.pbp.tubes.uas.richhotel.Daftar.DaftarKamarAdmin;
@@ -19,7 +18,6 @@ import com.pbp.tubes.uas.richhotel.Daftar.DaftarReservasiAdmin;
 import com.pbp.tubes.uas.richhotel.Profil.ProfilAdmin;
 import com.pbp.tubes.uas.richhotel.R;
 import com.pbp.tubes.uas.richhotel.SignOut.SignOut;
-import com.pbp.tubes.uas.richhotel.SignOut.SignOutUser;
 
 //ADMIN///
 public class MainActivity extends AppCompatActivity {
